@@ -7,15 +7,10 @@ export default function LogInFacebook() {
     <div>
       <FacebookLogin
         appId="1436198224349505" // حطي الـ App ID اللي أخدتيه من Meta
-        onSuccess={(response) => {
-          console.log("✅ Login Success:", response);
-        }}
-        onFail={(error) => {
-          console.log("❌ Login Failed:", error);
-        }}
-        onProfileSuccess={(profile) => {
-          console.log("👤 Profile Info:", profile);
-        }}
+        scope="public_profile,email" // ← هنا بتطلبي الصلاحيات
+        onSuccess={(response) => console.log("✅ Login Success:", response)}
+        onFail={(error) => console.log("❌ Login Failed:", error)}
+        onProfileSuccess={(profile) => console.log("👤 Profile Info:", profile)}
         render={({ onClick }) => (
           <FacebookLoginButton onClick={onClick} style={{ width: "250px" }}>
             Login with Facebook
