@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import HooksTrial from "./components/hookstrial";
 import { useSelector, useDispatch } from "react-redux";
 import LogInFacebook from "./components/LogInFacebook";
 import {
@@ -20,7 +19,6 @@ export default function App() {
   }, []);
   return (
     <>
-      {/* <HooksTrial /> */}
 
       <LogInFacebook />
 
