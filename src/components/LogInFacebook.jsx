@@ -1,22 +1,40 @@
 import React from "react";
-import FacebookLogin from "@greatsumini/react-facebook-login";
 import { FacebookLoginButton } from "react-social-login-buttons";
+import FacebookLogin from "@greatsumini/react-facebook-login";
 
-export default function LogInFacebook() {
+const FacebookAuth = () => {
+  const responseFacebook = (response) => {
+    console.log("Login Success:", response);
+    // Handle successful login (store user data, redirect, etc.)
+    if (response.email) {
+      alert(`Welcome, ${response.name}!`);
+    }
+  };
+
+  const handleFailure = (error) => {
+    console.error("Login Failed:", error);
+    alert("Facebook login failed. Please try again.");
+  };
+
   return (
-    <div>
+    <div className="facebook-auth-container">
       <FacebookLogin
-        appId="1436198224349505" // حطي الـ App ID اللي أخدتيه من Meta
-        scope="public_profile,email" // ← هنا بتطلبي الصلاحيات
-        onSuccess={(response) => console.log("✅ Login Success:", response)}
-        onFail={(error) => console.log("❌ Login Failed:", error)}
-        onProfileSuccess={(profile) => console.log("👤 Profile Info:", profile)}
-        render={({ onClick }) => (
-          <FacebookLoginButton onClick={onClick} style={{ width: "250px" }}>
-            Login with Facebook
+        appId="2152395105270210" // Replace with your actual App ID
+        autoLoad={false}
+        fields="name,email,picture"
+        onSuccess={responseFacebook}
+        onFail={handleFailure}
+        render={(renderProps) => (
+          <FacebookLoginButton 
+            onClick={renderProps.onClick}
+            style={{ width: "100%", fontSize: "14px" }}
+          >
+            Continue with Facebook
           </FacebookLoginButton>
         )}
       />
     </div>
   );
-}
+};
+
+export default FacebookAuth;

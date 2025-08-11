@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import LogInFacebook from "./components/LogInFacebook";
+import FacebookAuth from "./components/LogInFacebook";
 import {
   addTodo,
   removeTodo,
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <>
 
-      <LogInFacebook />
+      <FacebookAuth />
 
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         <div
